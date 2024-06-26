@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.urls import path
-from company.views import test_response
+from company.views import show
+
 
 urlpatterns = [
-    path('test/', test_response),
+    path('show/', show, name='show'),
 ]
