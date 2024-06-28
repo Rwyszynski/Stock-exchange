@@ -43,7 +43,7 @@ header{
   display:flex;
 }
 .row{
-  width:30%; 
+  width:24%; 
   margin:15px;
 
 }
@@ -82,9 +82,12 @@ h1{
     <div class="button">
        <a href="/members">API</a> 
     </div>
+    <div class="button">
+      <a href="/members">Zaloguj</a> 
+   </div>
   </header>  
   <main>
-    <h1>Lista spółek: </h1>
+    <h1>Lista spółek</h1>
     <div class="container">
       <div class="section">
         <div class="row name">
@@ -94,10 +97,14 @@ h1{
           Skrót 
         </div>
         <div class="row name">
+          Cena 
+        </div>
+        <div class="row name">
           Wykres 
         </div>
       </div>
-      {% for i in response.data %}
+      {% for i in response %}   
+      {% comment %} Jeśli nazwa słownika data wtedy response.data {% endcomment %}
       <div class="section">
 
           <div class="row">
@@ -106,8 +113,11 @@ h1{
           <div class="row">
             {{ i.name }} 
           </div>
+          <div class="row">
+            {{ i.price }} zł
+          </div>
           <div class="row diag">
-            <img class="diag__img" src="{% static '/media/diag.png' %}" /> 
+            <button type="submit" onclick="location.href='#'"><img class="diag__img" src="{% static '/media/diag.png' %}" /> </button>
           </div>
         </div>
         {% endfor %}
