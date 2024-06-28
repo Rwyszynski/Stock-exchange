@@ -1,0 +1,60 @@
+body {
+  font-size: 20px;
+  font-family: "Open Sans", sans-serif;
+}
+
+header {
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background-color: #CC99FF;
+}
+
+.gielda {
+  height: 20vh;
+
+}
+
+.gielda img {
+  max-height: 100%;
+  border: 20px;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.container {
+  width: 100%;
+
+}
+
+.section {
+  display: flex;
+}
+
+.row {
+  width: 24%;
+  margin: 15px;
+
+}
+
+.diag__img {
+  width: 30px;
+}
+
+.button {
+  padding: 50px;
+  background-color: #CC99FF;
+  font-color: #330066;
+  border: 5px solid black;
+  width: 7vw;
+  text-align: center;
+  margin: 0px;
+}
+
+h1 {
+  text-align: center;
+}

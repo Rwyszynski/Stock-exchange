@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}Analyze{% endblock %}
+
+{% block page %}
+
+    <h1>Analiza spółki</h1>
+
+    Spółka
+    <a href="{% url 'analyze' %}">5 min</a>
+    <a href="{% url 'analyze' %}">30 min</a>
+    <a href="{% url 'analyze' %}">1 godz</a>
+    <a href="{% url 'analyze' %}">1 dz</a>
+    CCI 
+    macd
+    Volume
+    Date time<br>
+{{df | safe }}
+
+
+<img src="data:image/png;base64,{{ dt }}" height="300" width="750">
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
