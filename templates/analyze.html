@@ -7,20 +7,21 @@
 
     <h1>Analiza spółki</h1>
 
-    Spółka
-    <a href="{% url 'analyze' %}">5 min</a>
-    <a href="{% url 'analyze' %}">30 min</a>
-    <a href="{% url 'analyze' %}">1 godz</a>
-    <a href="{% url 'analyze' %}">1 dz</a>
-    CCI 
-    macd
-    Volume
-    Date time<br>
+
 {{df | safe }}
 
 
-<img src="data:image/png;base64,{{ dt }}" height="300" width="750">
+<img src="data:image/png;base64,{{ dt }}" height="300" width="750"><br>
 
+Spółka
+<button id="period" onclick="analyze({{5min}})">{{5min}}</button>
+<a href="{% url 'analyze' %}">30 min</a>
+<button id="period" onclick="analyze({{1hour}})">{{1hour}}</button>
+<a href="{% url 'analyze' %}">1 dz</a>
+CCI 
+macd
+Volume
+Date time
 
 
 

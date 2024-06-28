@@ -4,5 +4,5 @@ from analyze.views import analyze
 
 
 urlpatterns = [
-    path('analyze/', analyze, name='analyze'),
+    path('analyze/', analyze(val), name='analyze'),
 ]
