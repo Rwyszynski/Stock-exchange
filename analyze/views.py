@@ -1,17 +1,15 @@
 from django.shortcuts import render
 import requests
 import pandas as pd
-
 from matplotlib import pyplot as plt
 import io
 import base64
 import urllib
 
 
-def analyze(request, val="15min"):
-
+def analyze(request, val='15min'):
     response = requests.get(
-        'https://financialmodelingprep.com/api/v3/historical-chart/{val}/AAPL?from=2024-05-27&to=2024-06-27&apikey=1naOu5k2WMCBylHjrlsRplGrDXNdSsqt').json()
+        f'https://financialmodelingprep.com/api/v3/historical-chart/{val}/AAPL?from=2024-05-27&to=2024-06-27&apikey=1naOu5k2WMCBylHjrlsRplGrDXNdSsqt').json()
 
     df = pd.DataFrame(
         columns=["date", "open", "low", "high", "close", "volume"])
@@ -22,6 +20,10 @@ def analyze(request, val="15min"):
 
     date = df['date'].tolist()
     close = df['close'].tolist()
+    plt.clf()
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.style.use('ggplot')
     plt.plot(date, close)
     plt.title("Wykres cenowy spółki")
     plt.xlabel("Data")

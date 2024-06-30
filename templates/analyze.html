@@ -11,13 +11,13 @@
 {{df | safe }}
 
 
-<img src="data:image/png;base64,{{ dt }}" height="300" width="750"><br>
+<img src="data:image/png;base64,{{ dt }}" height="400" width="750"><br>
 
 Spółka
-<button id="period" onclick="analyze({{5min}})">{{5min}}</button>
-<a href="{% url 'analyze' %}">30 min</a>
-<button id="period" onclick="analyze({{1hour}})">{{1hour}}</button>
-<a href="{% url 'analyze' %}">1 dz</a>
+<button id="period" onclick="location.href='{% url 'analyze' val="5min" %}'">5min</button>
+<button id="period" onclick="location.href='{% url 'analyze' val="30min" %}'">30min</button>
+<button id="period" onclick="location.href='{% url 'analyze' val="4hour" %}'">4hour</button>
+<button id="period" onclick="location.href='{% url 'analyze' val="1day" %}'">1day</button>
 CCI 
 macd
 Volume

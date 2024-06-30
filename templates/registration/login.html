@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block page %}
+<h1>Zaloguj</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Zaloguj się</button>
+    </form>
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
