@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'analyze',
     'trade',
     'api',
-    'request',
+    'requests',
 
 ]
 
@@ -82,9 +82,13 @@ WSGI_APPLICATION = 'StockExhange.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "Stocks",
+        "USER": "postgres",
+        "PASSWORD": "1robo1",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
 }
 
@@ -111,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'pl'
+LANGUAGE_CODE = 'EN'
 
 TIME_ZONE = 'UTC'
 

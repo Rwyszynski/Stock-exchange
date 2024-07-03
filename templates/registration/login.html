@@ -6,7 +6,7 @@
 {% block page %}
 <h1>Zaloguj</h1>
 
-    <form method="POST">
+    <form method="POST" >
         {% csrf_token %}
         {{ form }}
         <button type="submit">Zaloguj się</button>
