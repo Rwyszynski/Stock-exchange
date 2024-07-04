@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+{% block page %}
+<h1>Zarejestruj się</h1>
+
+    <form method="POST" action="">
+        {%  csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" name="Create user">
+    </form>
+
+
+
+
+
+
+
+
+
+{% endblock %}
+

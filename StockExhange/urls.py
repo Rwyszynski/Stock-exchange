@@ -27,6 +27,7 @@ urlpatterns = [
     path('analyze/', include('analyze.urls')),
     path('login/', login_view, name='login'),
     path('logout/', auth_views.LogoutView.as_view()),
+    path('register', register, name='register'),
     path('trade/', include('trade.urls')),
     # path('api/', include('api.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,12 +1,39 @@
 {% extends 'main.html' %}
 {% load static %}
 
+
 {% block title %}Trade{% endblock %}
 
 {% block page %}
 
+
+
+
+
+
     <h1>Kup lub sprzedaj spółkę</h1>
-    
+    <div class="stock">
+        <div class="row_s">
+            <select >
+                {% for i in response %}  
+                <option value="{{i}}">{{ i.symbol }} {% if i in selected_values %} selected {% endif %}</option>
+
+
+                {% comment %} {% endif i in selected_values%} selected  {% endcomment %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row_s">
+            Cena: 
+        </div>
+        <div class="row_s">
+            Nazwa:
+        </div>
+
+
+        {% comment %} {% for option in response %}
+        <option value="{{option}}" {% if option in selected_values %} selected {% endif %}> {{option.name}}</option>
+        {% endfor %} {% endcomment %}
 
 
 
@@ -14,9 +41,26 @@
 
 
 
+        <div class="row_s">
+            <form action="#">
+                <label for="fname">Podaj ilość:</label>
+                <input type="text" id="fname" name="fname">
+            </form>
+
+        </div>
+        <select>
+            <option>Kupno</option>
+            <option>Sprzedaż</option>
+        </select>
+        <button type="button">Przelicz ilość</button>
+    </div>
+
+    <br><br>
+    <div class="row_s">Saldo konta:</div>
 
 
 
+    <button type="button">Zatwierdz</button>
 
 
 {% endblock %}

@@ -35,3 +35,13 @@ def login_view(request):
         form = AuthenticationForm()
 
     return render(request, atr, {"form": form})
+
+
+def register(request):
+    form = UserCreationForm()
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+    context = {'form': form}
+    return render(request, "registration/register.html", context)
