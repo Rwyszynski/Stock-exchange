@@ -14,32 +14,24 @@
     <h1>Kup lub sprzedaj spółkę</h1>
     <div class="stock">
         <div class="row_s">
-            <select >
-                {% for i in response %}  
-                <option value="{{i}}">{{ i.symbol }} {% if i in selected_values %} selected {% endif %}</option>
-
-
-                {% comment %} {% endif i in selected_values%} selected  {% endcomment %}
+            <select class="form-control" id="" name="stock" required>
+                {% for i in response %}
+                <option value="{{i.symbol}}"
+                    {% if f.fuel_zone_id == i.symbol %}
+                        selected="selected"
+                    {% endif %}>
+                          {{response.name}}
+                </option>
                 {% endfor %}
-            </select>
+           </select>
         </div>
         <div class="row_s">
+            
             Cena: 
         </div>
         <div class="row_s">
             Nazwa:
         </div>
-
-
-        {% comment %} {% for option in response %}
-        <option value="{{option}}" {% if option in selected_values %} selected {% endif %}> {{option.name}}</option>
-        {% endfor %} {% endcomment %}
-
-
-
-
-
-
 
         <div class="row_s">
             <form action="#">

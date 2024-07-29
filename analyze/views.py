@@ -1,10 +1,12 @@
 from django.shortcuts import render
+import numpy
 import requests
 import pandas as pd
 from matplotlib import pyplot as plt
 import io
 import base64
 import urllib
+import numpy as np
 
 
 def analyze(request, val='15min'):
@@ -21,10 +23,16 @@ def analyze(request, val='15min'):
     date = df['date'].tolist()
     close = df['close'].tolist()
     plt.clf()
+
+    period = date
+
+    # plt.xticks(0, 1)
     plt.xticks(rotation=45)
     plt.tight_layout()
     plt.style.use('ggplot')
+
     plt.plot(date, close)
+
     plt.title("Wykres cenowy spółki")
     plt.xlabel("Data")
     plt.ylabel("Cena")
@@ -40,7 +48,9 @@ def analyze(request, val='15min'):
         'df': df.head(10).to_html(),
         'y': date,
         's': close,
-        'dt': url
+        'dt': url,
+        'period': period
+
     }
     return render(request, 'analyze.html', context)
 

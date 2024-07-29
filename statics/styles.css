@@ -58,3 +58,8 @@ header {
 h1 {
   text-align: center;
 }
+
+.diagram {
+  justify-content: center;
+  display: flex;
+}
