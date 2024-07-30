@@ -31,16 +31,22 @@ response = s.recv(8192)
 ###################################################
 # sending command parameters
 parameters = {
-    "command": "getChartLastRequest",
+    "command": "getAllSymbols",
     "arguments": {
-        "info": "CHART_LAST_INFO_RECORD" = {
-            "period": 5,
-            "start": 1262944112000,
-            "symbol": "PKN.PL"
-        },
-        "prettyPrint": True
+        "symbol": "CDR.PL"
     }
 }
+
+# {
+#     "command": "getChartLastRequest",
+#     "arguments": {
+#         "info": {
+#             "period": 5,
+#             "start": 1722113765860,
+#             "symbol": "EURUSD"
+#         }
+#     }
+# }
 
 packet = json.dumps(parameters)
 s.send(packet.encode("UTF-8"))

@@ -2,6 +2,16 @@
 list{%endblock %} {% block page %}
 
 <h1>Lista spółek</h1>
+<div class="order">
+  <p>Sortuj po:</p>
+  <select>
+    <option disabled selected>Wybierz</option>
+    <option>Nazwa rosnąco</option>
+    <option>Cena rosnąco</option>
+  </select>
+  <label for="search">Wyszukaj spółkę</label>
+  <input class="search" placeholder="Wpisz nazwę spółki" />
+</div>
 <div class="container">
   <div class="section">
     <div class="row name">Nazwa</div>
