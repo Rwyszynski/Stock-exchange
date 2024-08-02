@@ -7,21 +7,21 @@ import io
 import base64
 import urllib
 import numpy as np
+from API2 import download
 
 
-def analyze(request, val='15min'):
-    response = requests.get(
-        f'https://financialmodelingprep.com/api/v3/historical-chart/{val}/AAPL?from=2024-05-27&to=2024-06-27&apikey=1naOu5k2WMCBylHjrlsRplGrDXNdSsqt').json()
+def analyze(request, val=15):
+    response = requests.get(download(15, "06N.PL")).json()
 
     df = pd.DataFrame(
-        columns=["date", "open", "low", "high", "close", "volume"])
-    for i in range(0, len(response)):
+        columns=["ctm", "ctmString", "open", "close", "high", "low", "vol"])
+    for i in range(0, len(response["returnData"]["rateInfos"])):
         currentItem = response[i]
-        df.loc[i] = [response[i]["date"], response[i]["open"], response[i]["low"],
-                     response[i]["high"], response[i]["close"], response[i]["volume"]]
+        df.loc[i] = [response[i]["ctm"], response[i]["ctmString"], response[i]["open"],
+                     response[i]["close"], response[i]["high"], response[i]["low"], response[i]["vol"]]
 
-    date = df['date'].tolist()
-    close = df['close'].tolist()
+    date = df['ctmString'].tolist()
+    close = df['open'].tolist()
     plt.clf()
 
     period = date

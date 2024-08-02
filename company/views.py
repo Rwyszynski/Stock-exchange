@@ -20,6 +20,11 @@ def show(request):
     response = requests.get(
         'https://financialmodelingprep.com/api/v3/symbol/WSE?apikey=1naOu5k2WMCBylHjrlsRplGrDXNdSsqt').json()
 
+    ordering = request.GET.get('ordering', "")
+
+    # if ordering:
+    #     response.response.price.order_by(ordering)
+
     return render(request, 'index.html', {'response': response})
     # return JsonResponse({'url': url})
 

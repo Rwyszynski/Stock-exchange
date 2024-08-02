@@ -4,10 +4,14 @@ list{%endblock %} {% block page %}
 <h1>Lista spółek</h1>
 <div class="order">
   <p>Sortuj po:</p>
-  <select>
-    <option disabled selected>Wybierz</option>
-    <option>Nazwa rosnąco</option>
-    <option>Cena rosnąco</option>
+  <select
+    name="sort"
+    onchange="location = finalurl();"
+    style="margin-left: auto"
+  >
+    <option value="" id="placeholder" disabled selected>Wybierz</option>
+    <option id="name" value="name">Nazwa rosnąco</option>
+    <option id="price" value="price">Cena rosnąco</option>
   </select>
   <label for="search">Wyszukaj spółkę</label>
   <input class="search" placeholder="Wpisz nazwę spółki" />
@@ -21,8 +25,8 @@ list{%endblock %} {% block page %}
   </div>
 
   {% for i in response %} {% comment %} Jeśli nazwa słownika data wtedy
-  response.data {% endcomment %}
-  <div class="section">
+  response.data {% endcomment %} {% comment %} od tąd {% endcomment %}
+  <div class="section it">
     <div class="row">{{ i.symbol }}</div>
     <div class="row">{{ i.name }}</div>
     <div class="row">{{ i.price }} zł</div>
@@ -32,6 +36,36 @@ list{%endblock %} {% block page %}
       </button>
     </div>
   </div>
-  {% endfor %}
+  {% comment %} do tąd {% endcomment %} {% endfor %}
 </div>
-{% endblock %}
+
+{% block js %}
+
+<script>
+  {% comment %} function get(name) {
+    if (
+      (name = new RegExp("[?&]" + encodeURIComponent(name) + "=([^&]*)").exec(
+        location.search
+      ))
+    )
+      return decodeURIComponent(name[1]);
+  }
+
+  if (get("ordering"))
+    document.getElementById("placeholder").innerHTML =
+      "Sort: " + document.getElementById(get("ordering")).innerHTML;
+
+  function finalurl() {
+    var url = new URL(window.location.href);
+    console.log(url);
+    var search_params = url.searchParams;
+    console.log(search_params);
+    search_params.set("ordering", document.getElementById("sort-list").value);
+    url.search = search_params.toString();
+    var new_url = url.toString();
+    console.log(new_url);
+    return new_url;
+  } {% endcomment %}
+</script>
+
+{% endblock %} {% endblock %}
