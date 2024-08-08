@@ -42,30 +42,31 @@ list{%endblock %} {% block page %}
 {% block js %}
 
 <script>
-  {% comment %} function get(name) {
-    if (
-      (name = new RegExp("[?&]" + encodeURIComponent(name) + "=([^&]*)").exec(
-        location.search
-      ))
-    )
-      return decodeURIComponent(name[1]);
-  }
+  // Pobieranie wszystkich elementów z klasą 'section'
+  let sections = document.querySelectorAll(".section");
 
-  if (get("ordering"))
-    document.getElementById("placeholder").innerHTML =
-      "Sort: " + document.getElementById(get("ordering")).innerHTML;
+  // Konwertowanie NodeList na tablicę
+  sections = Array.from(sections);
 
-  function finalurl() {
-    var url = new URL(window.location.href);
-    console.log(url);
-    var search_params = url.searchParams;
-    console.log(search_params);
-    search_params.set("ordering", document.getElementById("sort-list").value);
-    url.search = search_params.toString();
-    var new_url = url.toString();
-    console.log(new_url);
-    return new_url;
-  } {% endcomment %}
+  // Pobieranie rodzica wszystkich sekcji (zakładając, że wszystkie sekcje mają tego samego rodzica)
+  let parent = sections[0].parentNode;
+
+  // Usuwanie wszystkich sekcji ze strony
+  sections.forEach((section) => parent.removeChild(section));
+
+  // Sortowanie sekcji według wartości w elemencie z klasą 'row-price'
+  sections.sort((a, b) => {
+    let priceA = parseFloat(
+      a.querySelector(".row-price").innerText.replace(/[^0-9.]/g, "")
+    );
+    let priceB = parseFloat(
+      b.querySelector(".row-price").innerText.replace(/[^0-9.]/g, "")
+    );
+    return priceA - priceB;
+  });
+
+  // Wklejanie posortowanych sekcji z powrotem do rodzica
+  sections.forEach((section) => parent.appendChild(section));
 </script>
 
 {% endblock %} {% endblock %}
